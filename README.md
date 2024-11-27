@@ -1,6 +1,6 @@
 # CHIP-NMC: an application for <ins>C</ins>orn <ins>H</ins>ybrid and <ins>I</ins>nbred <ins>P</ins>rediction of <ins>N</ins>ixtamalization <ins>M</ins>oisture <ins>C</ins>ontent
-by Michael J. Burns^1, Sydney Berry, Molly Loftus, Amanda M. Gilbert, and Candice N. Hirsch  
-Department of Agronomy and Plant Genetics, University of Minnesota
+by Michael J. Burns<sup>1</sup>, Sydney Berry, Molly Loftus, Amanda M. Gilbert, and Candice N. Hirsch  
+<sup>1</sup>Department of Agronomy and Plant Genetics, University of Minnesota
 
 ## Purpose:
 Food-grade corn is an economically important crop in the United States and worldwide. However, 
