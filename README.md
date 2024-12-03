@@ -39,6 +39,9 @@ to determine which chemical functional groups were associated with predictive pe
 
 ## Directories:
 - Code:
-  - scripts used in the analysis for the publication
+  - scripts used in the analysis for the publication.
 - Application:
-  - A free-to-use, locally running RShiny application that can be implemented in various stages of corn breeding
+  - A free-to-use, locally running RShiny application that can be implemented in various stages of corn breeding.
+- Data:
+  - The data used in the R markdown file.
+  - File paths in the scripts will not match local file paths. Please update appropriately.
