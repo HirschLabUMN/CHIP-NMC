@@ -26,21 +26,21 @@ library(ggpubr)
 
 # Loading the Data
 ```{r load data, message = F, warning = F}
-inbred_train_data = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Moisture_Uptake_Master_Dataset_Cook_Macro_Spectra.csv') %>%
+inbred_train_data = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Burns_et_al_2021_Inbred_Training_Set.csv') %>%
   select(1,2,26:167)
 
-inbred_val_data = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/ML_Master_Validation_Dataset.csv') %>%
+inbred_val_data = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Burns_et_al_2021_Inbred_Validation_Set.csv') %>%
   rename(Sample_ID = SampleID)
 
-hybrid_scans = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Scans/Hybrid_Maize_NIR_Spectra.csv')
+hybrid_scans = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Scans/Hybrid_Maize_NIR_Spectra_Coded.csv')
 
-hybrid_data = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Hybrid_Training_Data_305.csv')
+hybrid_data = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Hybrid_Training_Data_305_Coded.csv')
 
-hybrid_val_data = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Final_Validation_Samples.csv')
+hybrid_val_data = read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Final_Validation_Samples_Coded.csv')
 
 sum(hybrid_val_data$Genotype %in% hybrid_data$Genotype)
 
-hybrid_genos_xref = read_csv('/Users/michael/Desktop/Grad_School/Research/Hybrid_NMC/Data/XRefs/Hybrid_Genotypes_XRef.csv') %>%
+hybrid_genos_xref = read_csv('/Users/michael/Desktop/Grad_School/Research/Hybrid_NMC/Data/XRefs/Hybrid_Genotypes_XRef_Coded.csv') %>%
   unique()
 
 # hybrid_data %>%
@@ -354,7 +354,7 @@ The moisture distributions between inbreds (train) and hybrids are significantly
 ```{r compositional consistency, message = F, warning = F}
 inbred_comp = inbred_train_data %>%
   select(Sample_ID, Moisture_Uptake) %>% 
-  left_join(read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Moisture_Uptake_Master_Dataset_Cook_Macro_Spectra.csv') %>%
+  left_join(read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/Burns_et_al_2021_Inbred_Training_Set.csv') %>%
     select(1,2,20:25)) %>%
   rename(Protein = Protein_As_is,
          Starch = Starch_As_is,
@@ -579,7 +579,7 @@ ggsave('/Users/michael/Desktop/Grad_School/Research/Hybrid_NMC/Outputs/Training_
 
 ### Compositional Profiles
 ```{r compare training and all hybrid data, message = F, warning = F}
-hybrid_comp_all = read_csv('/Users/michael/Desktop/Grad_School/Research/Hybrid_NMC/Data/Scans/Hybrid_Maize_Composition_Predictions.csv') %>%
+hybrid_comp_all = read_csv('/Users/michael/Desktop/Grad_School/Research/Hybrid_NMC/Data/Scans/Hybrid_Maize_Composition_Predictions_Coded.csv') %>%
   filter(Sample_ID %in% toupper(hybrid_scans$Sample_ID)) %>%
   mutate(Group = case_when(Sample_ID %in% hybrid_data$Sample_ID ~ 'Training',
                            !Sample_ID %in% hybrid_data$Sample_ID ~ 'Remaining')) %>%
@@ -625,6 +625,7 @@ ggsave('/Users/michael/Desktop/Grad_School/Research/Hybrid_NMC/Outputs/Compositi
 ### Load the Bootstrapped Training Results
 ```{r bootstrapping boosted and hybrid models, message = F, warning = F}
 Path = '~/Desktop/Grad_School/Research/Hybrid_NMC/'
+# This file cannot be inlcuded in the github repo due to it's size. Please see table S6 for the aggregated results. Contact the author for the full dataset that will allow this section to run as intended.
 boot_data = read_csv(paste0(Path, 'Data/ML_Model_Performances_Full_305.csv')) %>% # remove _Full for original analysis
   filter(spectra %in% c('raw', 'snv', 'baseline'))
 
@@ -1620,7 +1621,7 @@ for(exp in unique(comm_met_comps$Experiment)){
     # Read in xref file for planting density and combine it to the subset of data
     comm_met_comps_sub = comm_met_comps %>%
       filter(Experiment == exp) %>% 
-      left_join(read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/XRefs/PA_Hybrids_XRef.csv') %>%
+      left_join(read_csv('~/Desktop/Grad_School/Research/Hybrid_NMC/Data/XRefs/PA_Hybrids_XRef_Coded.csv') %>%
                   mutate(Sample_ID = paste0('PA_', Barcode)) %>%
                   select(Sample_ID, Rep, Population))
     
