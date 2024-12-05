@@ -2,7 +2,7 @@
 This directory includes the analysis scripts that were used for the publication. Please note, that file names in the script will not match those in the manuscript tables. A data reading rework is planned soon to ensure everything runs properly.
 
 ## File Descriptions
-- Hybrid_NMC_Model.Rmd
+- CHIP-NMC_Assessment.Rmd
   - The Rmarkdown file containing the majority of the analysis performed for this project.
   - All figures were created in this file.
   - Besides from formatting changes, tables were also created here.
