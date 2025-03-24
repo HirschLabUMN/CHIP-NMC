@@ -15,7 +15,7 @@ production pipeline. The hybrid-trained model was used to assess the effects of 
 nixtamalization moisture content.
 
 ## Publication:
-For more information, please see the manuscript at: **ADD DOI HERE**
+For more information, please see the manuscript at: doi.org/10.1002/cche.10874
 
 ## Pipeline Description:
 This project has developed a machine learning model to predict nixtamalization moisture content from NIR
